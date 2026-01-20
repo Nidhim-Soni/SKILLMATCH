@@ -46,6 +46,7 @@ if st.button('SUBMIT'):
         * Resume : {file_text}
         * Job Description : {job_desc}
         <Format>  The report should follow these steps : 
+        * Do not use HTLM Codes or command
         * Give a breif description of the applicant in 3-5 lines.
         * Describe in percentage what our the chances of this Resume of getting selected.
         * Need not to be exact percentage, your can give interval of percentage based close approximation. 
