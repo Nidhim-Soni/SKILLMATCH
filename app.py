@@ -38,28 +38,29 @@ st.info(tips)
 job_desc = st.text_area(':red[Copy and paste your JOB DESCRIPTION here.]',max_chars=10000)
 
 if st.button('SUBMIT'):
-    prompt = f'''
-    <Role> You are an expert in analysing resume and matching it with  job description. Also you have an experience in data science and generative aI for about 15+ years
-    <Goal> Match the resume and the Job description provided by the applicant
-    <Context> The following content has been provided by the applicant
-    * Resume : {file_text}
-    * Job Description : {job_desc}
-    <Format>  The report should follow these steps : 
-    * Give a breif description of the applicant in 3-5 lines.
-    * Describe in percentage what our the chances of this Resume of getting selected.
-    * Need not to be exact percentage, your can give interval of percentage based close approximation. 
-    * Give the expected ATS score along witht the list of matching an dnon matching keywords
-    * Perform SWAT Analysis and explain each parameter, that is, Strength , Weakness, Opportunity and Threat.
-    * Give what all Sections in the current resume that are required to be changed in order to improve the ATS Score and selection percentage.
-    * Show both current vesion and improve version of the section in resume with proper clarity and easy to be accessible
-    * Create two sample resume which can maximize the ats score and selection percentage and make the resume stand out from others
-    <Instructions> 
-    * Use bullet points for explanantion where ever possible.
-    * Create tables for description where ever required
-    * strictly do not add any new skill in sample resume.
-    * the format of sample resumes must be according to the current market requirement. the format should be in such a way that it can be copy-pasted directly in word file.
+    with st.spinner('Processing....'):
+        prompt = f'''
+        <Role> You are an expert in analysing resume and matching it with  job description. Also you have an experience in data science and generative aI for about 15+ years
+        <Goal> Match the resume and the Job description provided by the applicant
+        <Context> The following content has been provided by the applicant
+        * Resume : {file_text}
+        * Job Description : {job_desc}
+        <Format>  The report should follow these steps : 
+        * Give a breif description of the applicant in 3-5 lines.
+        * Describe in percentage what our the chances of this Resume of getting selected.
+        * Need not to be exact percentage, your can give interval of percentage based close approximation. 
+        * Give the expected ATS score along witht the list of matching an dnon matching keywords
+        * Perform SWAT Analysis and explain each parameter, that is, Strength , Weakness, Opportunity and Threat.
+        * Give what all Sections in the current resume that are required to be changed in order to improve the ATS Score and selection percentage.
+        * Show both current vesion and improve version of the section in resume with proper clarity and easy to be accessible
+        * Create two sample resume which can maximize the ats score and selection percentage and make the resume stand out from others
+        <Instructions> 
+        * Use bullet points for explanantion where ever possible.
+        * Create tables for description where ever required
+        * strictly do not add any new skill in sample resume.
+        * the format of sample resumes must be according to the current market requirement. the format should be in such a way that it can be copy-pasted directly in word file.
 
 
-    '''
-    response = model.invoke(prompt)
-    st.write(response.content)
+        '''
+        response = model.invoke(prompt)
+        st.write(response.content)
